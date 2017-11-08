@@ -28,6 +28,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'vim-scripts/matchit.zip'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'kien/ctrlp.vim'
 
     Plug 'thaerkh/vim-workspace'
 
@@ -76,12 +77,6 @@ let g:syntastic_always_populate_loc_list = 1
 
 " Configuracoes do javascript plugin
 let g:javascript_plugin_jsdoc =  1
-
-" Configurações do typescript
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
 
 " debug ycm server
 let g:ycm_server_keep_logfiles = 1
