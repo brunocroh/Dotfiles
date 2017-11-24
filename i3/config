@@ -191,6 +191,13 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+#Open a Chrome window
+bindsym Mod4+c exec google-chrome
+
+#Enable Seconds monitor
+bindsym Mod4+p exec xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
+
+
 client.focused #4c7899 #285577 #ffffff #2e9ef4
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused #333333 #222222 #888888 #292d2e
