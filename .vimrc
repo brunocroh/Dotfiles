@@ -9,8 +9,15 @@ set modifiable
 set incsearch
 set hlsearch
 
+" fold Config
+set foldmethod=syntax "syntax highlighting items specify folds
+set foldcolumn=1 "defines 1 col at window left, to indicate folding
+let javaScript_fold=1 "activate folding by JS syntax
+set foldlevelstart=99 "start file with all folds opened
+
 set nowrap
 setglobal fileencoding=utf-8
+let g:gruvbox_termcolors=16
 
 autocmd vimenter * NERDTree
 
@@ -19,6 +26,8 @@ let g:airline_solarized_bg='molokai'
 
 call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
+    
+    Plug 'scrooloose/nerdcommenter'
 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -34,6 +43,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'pangloss/vim-javascript'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'jelera/vim-javascript-syntax'
+    Plug 'mxw/vim-jsx'
     Plug 'leafgarland/typescript-vim'
     Plug 'Quramy/tsuquyomi'
     Plug 'Valloric/YouCompleteMe'
@@ -59,6 +69,28 @@ call plug#begin('~/.vim/plugged')
     Plug 'epilande/vim-react-snippets'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
+    Plug 'easymotion/vim-easymotion'
+
+    Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'branch': 'release/1.x',
+    \ 'for': [
+      \ 'javascript',
+      \ 'typescript',
+      \ 'css',
+      \ 'less',
+      \ 'scss',
+      \ 'json',
+      \ 'graphql',
+      \ 'markdown',
+      \ 'vue',
+      \ 'lua',
+      \ 'php',
+      \ 'python',
+      \ 'ruby',
+      \ 'html',
+      \ 'swift' ] }
+
 call plug#end()
 
 " Configuração dos Tabs
@@ -72,8 +104,6 @@ let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeShowLineNumbers = 1
-
-let g:NERDTreeShowLineNumbers = 1
 let NERDTreeIgnore=['node_modules', '\~$']
 
 nmap <F4> :NERDTreeToggle<CR>
@@ -83,13 +113,15 @@ nmap <F4> :NERDTreeToggle<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+" map Easymotion
+nmap <Space> <Plug>(easymotion-overwin-f)
+
 " Configuracoes do javascript plugin
 let g:javascript_plugin_jsdoc =  1
 
 " debug ycm server
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
-
 
 " Configuracoes visuais do airline
 let g:airline_theme='dark'
@@ -103,7 +135,7 @@ let g:airline_right_sep = '◀'
 let g:user_emmet_leader_key=','
 
 " Ctrl-p ignore folders
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 
 let g:ycm_auto_trigger = 0
 
@@ -113,21 +145,33 @@ let g:SuperTabCrMapping                = 0
 let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:UltiSnipsListSnippets = '<C-l>'
 
  " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
+let g:UltiSnipsExpandTrigger = "<C-l>"
+let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
-let g:ale_fixers = ['eslint']
+let g:ale_fixers = {'javascript': ['prettier_standard'], 'typescript': ['prettier_standard']}
+let g:ale_linters = {'javascript': ['']}
+let g:ale_completion_enabled = 1
+
+let g:syntastic_typescript_tsc_fname = ''
 
 autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd BufRead,BufNewFile *.tsx setlocal syntax=javascript.jsx
 
-color dracula
+ " Prettier config
+let g:prettier#exec_cmd_path = "~/.nvm/versions/node/v10.15.3/bin/prettier-standard"
+
+nmap <silent> <Leader>p :ALEFix<CR>
+
+colorscheme molokai
+color gruvbox
 
 if has("autocmd")
     au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
     au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
     au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
 endif
+
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
