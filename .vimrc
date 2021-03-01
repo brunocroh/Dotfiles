@@ -1,4 +1,7 @@
 syntax on
+filetype plugin on
+syntax enable
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 let g:NERDTreeDirArrows=0
 
@@ -8,6 +11,7 @@ set modifiable
 
 set incsearch
 set hlsearch
+let $BASH_ENV = "~/.bash_aliases"
 
 " fold Config
 set foldmethod=syntax "syntax highlighting items specify folds
@@ -16,8 +20,12 @@ let javaScript_fold=1 "activate folding by JS syntax
 set foldlevelstart=99 "start file with all folds opened
 
 set nowrap
-setglobal fileencoding=utf-8
-let g:gruvbox_termcolors=16
+setglobal fileencoding=UTF-8
+
+let python_highlight_all=1
+
+let g:rehash256 = 1
+set t_Co=256
 
 autocmd vimenter * NERDTree
 
@@ -26,6 +34,10 @@ let g:airline_solarized_bg='molokai'
 
 call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'dense-analysis/ale'
+
+    Plug 'terryma/vim-multiple-cursors'
     
     Plug 'scrooloose/nerdcommenter'
 
@@ -39,37 +51,41 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'thaerkh/vim-workspace'
 
+    Plug 'arcticicestudio/nord-vim'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+    Plug 'SirVer/ultisnips'
+
     Plug 'Yggdroot/indentLine'
     Plug 'pangloss/vim-javascript'
-    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'jelera/vim-javascript-syntax'
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'mxw/vim-jsx'
     Plug 'leafgarland/typescript-vim'
-    Plug 'Quramy/tsuquyomi'
-    Plug 'Valloric/YouCompleteMe'
-    Plug 'w0rp/ale'
     Plug 'ekalinin/dockerfile.vim'
 
     Plug 'ervandew/supertab'
     Plug 'mattn/emmet-vim'
 
     Plug 'tpope/vim-fugitive'
+    Plug 'zivyangll/git-blame.vim'
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+    
 
-    Plug 'arcticicestudio/nord-vim'
-    Plug 'tomasr/molokai'
-    Plug 'dracula/vim'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
     Plug 'gabrielelana/vim-markdown'
-    Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/tpope-vim-abolish'
     Plug 'editorconfig/editorconfig-vim'
 
     Plug 'tpope/vim-dadbod'
     Plug 'Galooshi/vim-import-js'
     Plug 'epilande/vim-react-snippets'
-    Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
     Plug 'easymotion/vim-easymotion'
+
+    Plug 'chrisbra/vim-diff-enhanced'
 
     Plug 'prettier/vim-prettier', {
     \ 'do': 'yarn install',
@@ -91,7 +107,13 @@ call plug#begin('~/.vim/plugged')
       \ 'html',
       \ 'swift' ] }
 
+    " Python
+    Plug 'jnurmine/Zenburn'
+    Plug 'nvie/vim-flake8'
+
 call plug#end()
+
+colorscheme molokai
 
 " Configuração dos Tabs
 set tabstop=2
@@ -104,6 +126,7 @@ let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeShowLineNumbers = 1
+let NERDTreeWinSize = 30
 let NERDTreeIgnore=['node_modules', '\~$']
 
 nmap <F4> :NERDTreeToggle<CR>
@@ -112,6 +135,8 @@ nmap <F4> :NERDTreeToggle<CR>
 " Map keys of ALE
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
 
 " map Easymotion
 nmap <Space> <Plug>(easymotion-overwin-f)
@@ -134,6 +159,8 @@ let g:airline_right_sep = '◀'
 " Mapeando a tecla de atalho do emmet
 let g:user_emmet_leader_key=','
 
+let g:mwDefaultHighlightingPalette = 'maximum'
+
 " Ctrl-p ignore folders
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 
@@ -152,26 +179,22 @@ let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 let g:ale_fixers = {'javascript': ['prettier_standard'], 'typescript': ['prettier_standard']}
-let g:ale_linters = {'javascript': ['']}
+let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
 let g:ale_completion_enabled = 1
 
 let g:syntastic_typescript_tsc_fname = ''
 
-autocmd FileType typescript setlocal completeopt+=menu,preview
-autocmd BufRead,BufNewFile *.tsx setlocal syntax=javascript.jsx
+" autocmd FileType typescript setlocal completeopt+=menu,preview
+" autocmd BufRead,BufNewFile *.tsx setlocal syntax=javascript.jsx
+
+au BufRead,BufNewFile *.js set filetype=javascript
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
 
  " Prettier config
 let g:prettier#exec_cmd_path = "~/.nvm/versions/node/v10.15.3/bin/prettier-standard"
 
 nmap <silent> <Leader>p :ALEFix<CR>
 
-colorscheme molokai
-color gruvbox
-
-if has("autocmd")
-    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-endif
-
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
