@@ -9,14 +9,14 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
 
-  use 'nvim-lua/plenary.nviM'
+  use 'nvim-lua/plenary.nvim'
 
   -- Visual --
   use 'morhetz/gruvbox'
   use({
     'nvim-lualine/lualine.nvim',
     config = function()
-      require('brunocroh.plugins.lualine')   
+      require('brunocroh.plugins.lualine')
     end,
   })
 
@@ -167,4 +167,3 @@ return require('packer').startup(function(use)
   })
 
 end)
-
