@@ -1,4 +1,5 @@
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
+--
 vim.api.nvim_create_autocmd('BufWritePost', {
   group = vim.api.nvim_create_augroup('PACKER', { clear = true }),
   pattern = 'plugins.lua',
@@ -8,11 +9,36 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  use "mfussenegger/nvim-jdtls"
 
-  use 'nvim-lua/plenary.nvim'
+  use 'nvim-lua/plenary.nviM'
+  use 'easymotion/vim-easymotion'
+  use 'ap/vim-css-color'
+  use ({
+    'mattkubej/jest.nvim',
+    config = function()
+      require('brunocroh.plugins.jest')
+    end
+  })
+
+  -- Debug --
+  use ({
+    'mfussenegger/nvim-dap',
+    config = function()
+      require('brunocroh.plugins.dap')
+    end
+  })
+
+  use ({
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require('brunocroh.plugins.lsp.trouble')
+    end
+  })
 
   -- Visual --
-  use 'morhetz/gruvbox'
+ use 'morhetz/gruvbox'
   use({
     'nvim-lualine/lualine.nvim',
     config = function()
@@ -44,11 +70,16 @@ return require('packer').startup(function(use)
     { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
   })
 
+  use "lukas-reineke/indent-blankline.nvim"
+
   -- Fuzzy --
   use({
     {
       'nvim-telescope/telescope.nvim',
       event = 'CursorHold',
+      requires = {
+        { "nvim-telescope/telescope-live-grep-args.nvim" },
+      },
       config = function()
         require('brunocroh.plugins.telescope')
       end,
@@ -166,4 +197,18 @@ return require('packer').startup(function(use)
     end
   })
 
+  -- Tooling --
+  use ({"akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup({
+      size = 20,
+      open_mapping = [[<c-\>]],
+    })
+  end})
+
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
 end)
+

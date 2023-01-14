@@ -1,8 +1,11 @@
+local telescope = require('telescope')
 local actions = require('telescope.actions')
 local finders = require('telescope.builtin')
+local lga_actions = require("telescope-live-grep-args.actions")
 
-require('telescope').setup({
+telescope.setup({
     defaults = {
+        path_display={"smart"},
         prompt_prefix = ' ❯ ',
         initial_mode = 'insert',
         sorting_strategy = 'ascending',
@@ -12,23 +15,29 @@ require('telescope').setup({
         mappings = {
             i = {
                 ['<ESC>'] = actions.close,
-                ['<C-j>'] = actions.move_selection_next,
-                ['<C-k>'] = actions.move_selection_previous,
+                -- ['<C-j>'] = actions.move_selection_next,
+                -- ['<C-k>'] = actions.move_selection_previous,
                 ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
+                ["<C-k>"] = lga_actions.quote_prompt(),
             },
         },
     },
     extensions = {
+        live_grep_args ={
+          auto_quoting = true
+        },
         fzf = {
             fuzzy = true,
-            override_generic_sorter = true, -- override the generic sorter
+            override_generic_sorter = true, -- overrid the generic sorter
             override_file_sorter = true, -- override the file sorter
             case_mode = 'smart_case', -- "smart_case" | "ignore_case" | "respect_case"
         },
     },
 })
+
+telescope.load_extension('live_grep_args')
 
 local Telescope = setmetatable({}, {
     __index = function(_, k)
@@ -39,22 +48,25 @@ local Telescope = setmetatable({}, {
     end,
 })
 
--- Ctrl-p = fuzzy finder
-vim.keymap.set('n', '<C-P>', function()
-    local ok = pcall(Telescope.git_files, { show_untracked = true })
-    if not ok then
-        Telescope.find_files()
-    end
-end)
+local ctrlp = function()
+  local ok = pcall(Telescope.git_files, { show_untracked = true })
+  if not ok then
+      Telescope.find_files()
+  end
+end
+
+
+vim.keymap.set('n', '<C-P>', ctrlp)
+vim.keymap.set('n', '<leader>p', ctrlp)
 
 -- Get :help at the speed of light
 vim.keymap.set('n', '<leader>H', Telescope.help_tags)
 
 -- Fuzzy find active buffers
-vim.keymap.set('n', "'b", Telescope.buffers)
+vim.keymap.set('n', "<leader>b", Telescope.buffers)
 
 -- Search for string
-vim.keymap.set('n', "'r", Telescope.live_grep)
+vim.keymap.set("n", "<leader>i", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
 -- Fuzzy find changed files in git
-vim.keymap.set('n', "'c", Telescope.git_status)
+vim.keymap.set('n', "<leader>o", Telescope.git_status)
