@@ -11,6 +11,7 @@ require('nvim-tree').setup({
   view = {
     adaptive_size = true,
     side = 'left',
+    relativenumber= true,
   },
   filters = {
     custom = { '.git$', 'node_modules$', '^target$' },

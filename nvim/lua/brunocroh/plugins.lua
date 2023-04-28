@@ -7,9 +7,20 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 return require('packer').startup(function(use)
+  use 'Exafunction/codeium.vim'
   use 'wbthomason/packer.nvim'
 
   use "mfussenegger/nvim-jdtls"
+  use "f-person/git-blame.nvim"
+  use "airblade/vim-gitgutter"
+  use "jxnblk/vim-mdx-js"
+
+  use ({
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  })
 
   use 'nvim-lua/plenary.nviM'
   use 'easymotion/vim-easymotion'
