@@ -2,7 +2,7 @@ local set = vim.opt
 
 set.mouse = "a"
 set.number = true
-set.relativenumber = true
+set.relativenumber = false
 
 set.incsearch = true
 set.hlsearch = true  -- highlight search
@@ -14,7 +14,3 @@ set.tabstop= 2
 set.shiftwidth= 2
 set.softtabstop= 2
 set.expandtab = true
-
-require('brunocroh.settings')
-require('brunocroh.plugins')
-require('brunocroh.keybinds')
