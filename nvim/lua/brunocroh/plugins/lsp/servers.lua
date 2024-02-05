@@ -32,7 +32,7 @@ vim.diagnostic.config({
 })
 
 -- Lua
-lsp.sumneko_lua.setup({
+lsp.lua_ls.setup({
   flags = flags,
   capabilities = capabilities,
   on_attach = on_attach,
@@ -60,6 +60,12 @@ lsp.sumneko_lua.setup({
       },
     },
   },
+})
+
+lsp.tailwindcss.setup({
+  flags = flags,
+  capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 
@@ -110,3 +116,5 @@ for _, server in ipairs(servers) do
 end
 
 lsp.gdscript.setup({})
+lsp.tailwindcss.setup({})
+

@@ -7,13 +7,19 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 return require('packer').startup(function(use)
+  use "tpope/vim-abolish"
   use 'Exafunction/codeium.vim'
   use 'wbthomason/packer.nvim'
+  use 'habamax/vim-godot'
+  use 'Mofiqul/dracula.nvim'
 
   use "mfussenegger/nvim-jdtls"
   use "f-person/git-blame.nvim"
   use "airblade/vim-gitgutter"
   use "jxnblk/vim-mdx-js"
+  use "tpope/vim-fugitive"
+
+  use 'kabouzeid/nvim-lspinstall'
 
   use ({
     'numToStr/Comment.nvim',
@@ -39,6 +45,8 @@ return require('packer').startup(function(use)
       require('brunocroh.plugins.dap')
     end
   })
+
+  use 'kyazdani42/nvim-web-devicons'
 
   use ({
     "folke/trouble.nvim",
