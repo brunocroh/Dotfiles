@@ -1,37 +1,36 @@
 window:
   padding:
-   x: 8
-   y: 8
+    x: 8
+    y: 8
   opacity: 0.9
 
 font:
-  size: 9.5
+  size: 14
   normal:
-    family: Source Code Pro
-    style:  medium
+    family: FiraCode Nerd Font
+    style: Medium
 
 colors:
-
   primary:
-    background: '#1b1b25'
-    foreground: '#dedede'
+    background: "#1b1b25"
+    foreground: "#dedede"
 
   normal:
-    black:   '#15121c'
-    red:     '#cb5760'
-    green:   '#999f63'
-    yellow:  '#d4a067'
-    blue:    '#6c90a8'
-    magenta: '#776690'
-    cyan:    '#528a9b'
-    white:   '#eeffff'
+    black: "#15121c"
+    red: "#cb5760"
+    green: "#999f63"
+    yellow: "#d4a067"
+    blue: "#6c90a8"
+    magenta: "#776690"
+    cyan: "#528a9b"
+    white: "#eeffff"
 
   bright:
-    black:   '#727480'
-    red:     '#cb5760'
-    green:   '#999f63'
-    yellow:  '#d4a067'
-    blue:    '#6c90a8'
-    magenta: '#776690'
-    cyan:    '#528a9b'
-    white:   '#eeffff'
+    black: "#727480"
+    red: "#cb5760"
+    green: "#999f63"
+    yellow: "#d4a067"
+    blue: "#6c90a8"
+    magenta: "#776690"
+    cyan: "#528a9b"
+    white: "#eeffff"
