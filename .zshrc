@@ -80,7 +80,6 @@ plugins=(
   fzf
   zsh-syntax-highlighting
   zsh-autosuggestions
-  autojump
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -122,6 +121,32 @@ eval $(thefuck --alias)
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
-[[ -s /home/alphonse/.autojump/etc/profile.d/autojump.sh ]] && source /home/alphonse/.autojump/etc/profile.d/autojump.sh
 
-autoload -U compinit && compinit -u
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# RBENV
+eval "$(rbenv init - zsh)"
+
+# TMUX
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
+##The fuck
+eval $(thefuck --alias)
+
+# pnpm
+export PNPM_HOME="/Users/brunorodrigues/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+#
+eval "$(zoxide init zsh --cmd cd)"
+
