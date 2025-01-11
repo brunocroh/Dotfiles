@@ -53,6 +53,8 @@ lsp.lua_ls.setup({
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = { os.getenv('VIMRUNTIME') },
+        userThirdParty = {os.getenv("HOME") .. ".local/share/LuaAddons"},
+        checkThirdParty = "Apply"
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
@@ -98,7 +100,7 @@ lsp.rust_analyzer.setup({
 local servers = {
   'zls', -- Zig
   'gopls', -- Golang
-  'tsserver', -- Typescript
+  'ts_ls', -- Typescript
   'html', -- HTML
   'cssls', -- CSS
   'jsonls', -- Json

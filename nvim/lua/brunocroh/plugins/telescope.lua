@@ -15,12 +15,12 @@ telescope.setup({
         mappings = {
             i = {
                 ['<ESC>'] = actions.close,
-                -- ['<C-j>'] = actions.move_selection_next,
-                -- ['<C-k>'] = actions.move_selection_previous,
+                ['<C-j>'] = actions.move_selection_next,
+                ['<C-k>'] = actions.move_selection_previous,
                 ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
-                ["<C-k>"] = lga_actions.quote_prompt(),
+                ["<C-i>"] = lga_actions.quote_prompt(),
             },
         },
     },
@@ -38,6 +38,9 @@ telescope.setup({
 })
 
 telescope.load_extension('live_grep_args')
+telescope.load_extension('live_grep_args')
+telescope.load_extension('fzf')
+
 
 local Telescope = setmetatable({}, {
     __index = function(_, k)

@@ -12,7 +12,7 @@ nls.setup({
         -- FORMATTING --
         ----------------
         fmt.trim_whitespace.with({
-            filetypes = { 'text', 'zsh', 'toml', 'make', 'conf', 'tmux', },
+            filetypes = { 'text', 'zsh', 'toml', 'make', 'conf', 'tmux', 'typescriptreact' },
         }),
         -- NOTE:
         -- 1. both needs to be enabled to so prettier can apply eslint fixes

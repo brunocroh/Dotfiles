@@ -1,9 +1,6 @@
 require("lazy").setup({
   "tpope/vim-abolish",
-  'Exafunction/codeium.vim',
   'wbthomason/packer.nvim',
-  'habamax/vim-godot',
-  'Mofiqul/dracula.nvim',
   "mfussenegger/nvim-jdtls",
   "f-person/git-blame.nvim",
   "airblade/vim-gitgutter",
@@ -12,8 +9,17 @@ require("lazy").setup({
   "folke/which-key.nvim",
   'kabouzeid/nvim-lspinstall',
   'easymotion/vim-easymotion',
+  'MunifTanjim/prettier.nvim',
   'ap/vim-css-color',
-  'kyazdani42/nvim-web-devicons',
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
@@ -37,10 +43,11 @@ require("lazy").setup({
       require('brunocroh.plugins.jest')
     end
   },
-  'kyazdani42/nvim-web-devicons',
   {
     "folke/trouble.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = {
+      "kyazdani42/nvim-web-devicons"
+    },
     config = function()
       require('brunocroh.plugins.lsp.trouble')
     end
@@ -82,9 +89,6 @@ require("lazy").setup({
         {
           'nvim-telescope/telescope-fzf-native.nvim',
           build = 'make',
-          config = function()
-            require('telescope').load_extension('fzf')
-          end,
         },
       },
       config = function()
@@ -92,11 +96,11 @@ require("lazy").setup({
       end,
     },
   },
-   -- Code completion --
+  -- Code completion --
   {
     'mattn/emmet-vim',
-    setup = function()
-      vim.g.user_emmet_leader_key = ','
+    config = function()
+      vim.g.user_emmet_leader_key=','
       vim.g.user_emmet_settings = {
         indent_blockelement = 1,
       }
@@ -153,12 +157,24 @@ require("lazy").setup({
     },
   },
   {
-    'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufRead',
+    'stevearc/conform.nvim',
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     config = function()
-      require('brunocroh.plugins.lsp.null-ls')
+      require('brunocroh.plugins.lsp.conform')
+    end,
+    init = function()
+      -- If you want the formatexpr, here is the place to set it
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
+  -- {
+  --   'jose-elias-alvarez/null-ls.nvim',
+  --   event = 'BufRead',
+  --   config = function()
+  --     require('brunocroh.plugins.lsp.null-ls')
+  --   end,
+  -- },
   {
     'windwp/nvim-autopairs',
     event = 'InsertCharPre',
