@@ -52,7 +52,11 @@ lsp.lua_ls.setup({
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = { os.getenv('VIMRUNTIME') },
+        library = {
+          os.getenv('VIMRUNTIME'),
+          vim.fn.expand("~/.luarocks/share/lua/5.4")
+
+        },
         userThirdParty = {os.getenv("HOME") .. ".local/share/LuaAddons"},
         checkThirdParty = "Apply"
       },

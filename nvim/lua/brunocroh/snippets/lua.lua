@@ -38,5 +38,7 @@ ls.add_snippets("lua", {
   s(
     'req',
     fmt("require('{}')", i(1))
-  )
+  ),
 })
+
+
