@@ -21,6 +21,13 @@ require("lazy").setup({
     ft = { "markdown" },
   },
   {
+    "frankroeder/parrot.nvim",
+    dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('brunocroh.plugins.parrot')
+    end,
+  },
+  {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
       'nvim-tree/nvim-web-devicons', -- file icons
@@ -201,7 +208,6 @@ require("lazy").setup({
       require('brunocroh.plugins.fidget')
     end
   },
-
   { "folke/neoconf.nvim", cmd = "Neoconf" },
   "folke/neodev.nvim",
 })

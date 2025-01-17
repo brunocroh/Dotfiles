@@ -1,4 +1,5 @@
 
+
 require'nvim-jest'.setup({
   -- Jest executable
   -- By default finds jest in the relative project directory
