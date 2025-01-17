@@ -143,20 +143,6 @@ require("parrot").setup {
       prt.logger.info("Optimizing selection with model: " .. model_obj.name)
       prt.Prompt(params, prt.ui.Target.new, model_obj, nil, template)
     end,
-    UnitTests = function(prt, params)
-      local template = [[
-        I have the following code from {{filename}}:
-
-        ```{{filetype}}
-        {{selection}}
-        ```
-
-        Please respond by writing table driven unit tests for the code above.
-        ]]
-      local model_obj = prt.get_model "command"
-      prt.logger.info("Creating unit tests for selection with model: " .. model_obj.name)
-      prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
-    end,
     Debug = function(prt, params)
       local template = [[
         I want you to act as {{filetype}} expert.
