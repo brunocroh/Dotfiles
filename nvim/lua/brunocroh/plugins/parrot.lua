@@ -30,6 +30,7 @@ require("parrot").setup {
       api_key = os.getenv "XAI_API_KEY",
     },
   },
+  cmd_prefix = "Ia",
   hooks = {
     Complete = function(prt, params)
       local template = [[
@@ -192,21 +193,21 @@ require("parrot").setup {
   },
 }
 
-vim.keymap.set({ "n", "i" }, "<C-g>c", "<cmd>PrtChatNew<cr>", { desc = "New Chat" })
-vim.keymap.set({ "v" }, "<C-g>c", ":<C-u>'<,'>PrtChatNew<cr>", { desc = "Visual Chat New" })
-vim.keymap.set({ "n", "i" }, "<C-g>t", "<cmd>PrtChatToggle<cr>", { desc = "Toggle Popup Chat" })
-vim.keymap.set({ "n", "i" }, "<C-g>f", "<cmd>PrtChatFinder<cr>", { desc = "Chat Finder" })
-vim.keymap.set({ "n", "i" }, "<C-g>r", "<cmd>PrtRewrite<cr>", { desc = "Inline Rewrite" })
-vim.keymap.set({ "v" }, "<C-g>r", ":<C-u>'<,'>PrtRewrite<cr>", { desc = "Visual Rewrite" })
-vim.keymap.set({ "n" }, "<C-g>j", "<cmd>PrtRetry<cr>", { desc = "Retry rewrite/append/prepend command" })
-vim.keymap.set({ "n", "i" }, "<C-g>a", "<cmd>PrtAppend<cr>", { desc = "Append" })
-vim.keymap.set({ "v" }, "<C-g>a", ":<C-u>'<,'>PrtAppend<cr>", { desc = "Visual Append" })
-vim.keymap.set({ "n", "i" }, "<C-g>o", "<cmd>PrtPrepend<cr>", { desc = "Prepend" })
-vim.keymap.set({ "v" }, "<C-g>o", ":<C-u>'<,'>PrtPrepend<cr>", { desc = "Visual Prepend" })
-vim.keymap.set({ "v" }, "<C-g>e", ":<C-u>'<,'>PrtEnew<cr>", { desc = "Visual Enew" })
-vim.keymap.set({ "n", "i", "v", "x" }, "<C-g>s", "<cmd>PrtStop<cr>", { desc = "Stop" })
-vim.keymap.set({ "n", "i", "v", "x" }, "<C-g>i", ":<C-u>'<,'>PrtComplete<cr>", { desc = "Complete visual selection" })
-vim.keymap.set({ "n" }, "<C-g>x", "<cmd>PrtContext<cr>", { desc = "Open context file" })
-vim.keymap.set({ "n" }, "<C-g>n", "<cmd>PrtModel<cr>", { desc = "Select model" })
-vim.keymap.set({ "n" }, "<C-g>p", "<cmd>PrtProvider<cr>", { desc = "Select provider" })
-vim.keymap.set({ "n" }, "<C-g>q", "<cmd>PrtAsk<cr>", { desc = "Ask a question" })
+vim.keymap.set({ "n", "i" }, "<C-g>c", "<cmd>IaChatNew<cr>", { desc = "New Chat" })
+vim.keymap.set({ "v" }, "<C-g>c", ":<C-u>'<,'>IaChatNew<cr>", { desc = "Visual Chat New" })
+vim.keymap.set({ "n", "i" }, "<C-g>t", "<cmd>IaChatToggle<cr>", { desc = "Toggle Popup Chat" })
+vim.keymap.set({ "n", "i" }, "<C-g>f", "<cmd>IaChatFinder<cr>", { desc = "Chat Finder" })
+vim.keymap.set({ "n", "i" }, "<C-g>r", "<cmd>IaRewrite<cr>", { desc = "Inline Rewrite" })
+vim.keymap.set({ "v" }, "<C-g>r", ":<C-u>'<,'>IaRewrite<cr>", { desc = "Visual Rewrite" })
+vim.keymap.set({ "n" }, "<C-g>j", "<cmd>IaRetry<cr>", { desc = "Retry rewrite/append/prepend command" })
+vim.keymap.set({ "n", "i" }, "<C-g>a", "<cmd>IaAppend<cr>", { desc = "Append" })
+vim.keymap.set({ "v" }, "<C-g>a", ":<C-u>'<,'>IaAppend<cr>", { desc = "Visual Append" })
+vim.keymap.set({ "n", "i" }, "<C-g>o", "<cmd>IaPrepend<cr>", { desc = "Prepend" })
+vim.keymap.set({ "v" }, "<C-g>o", ":<C-u>'<,'>IaPrepend<cr>", { desc = "Visual Prepend" })
+vim.keymap.set({ "v" }, "<C-g>e", ":<C-u>'<,'>IaEnew<cr>", { desc = "Visual Enew" })
+vim.keymap.set({ "n", "i", "v", "x" }, "<C-g>s", "<cmd>IaStop<cr>", { desc = "Stop" })
+vim.keymap.set({ "n", "i", "v", "x" }, "<C-g>i", ":<C-u>'<,'>IaComplete<cr>", { desc = "Complete visual selection" })
+vim.keymap.set({ "n" }, "<C-g>x", "<cmd>IaContext<cr>", { desc = "Open context file" })
+vim.keymap.set({ "n" }, "<C-g>n", "<cmd>IaModel<cr>", { desc = "Select model" })
+vim.keymap.set({ "n" }, "<C-g>p", "<cmd>IaProvider<cr>", { desc = "Select provider" })
+vim.keymap.set({ "n" }, "<C-g>q", "<cmd>IaAsk<cr>", { desc = "Ask a question" })
