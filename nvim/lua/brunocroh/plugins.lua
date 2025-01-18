@@ -1,10 +1,7 @@
 require("lazy").setup({
-  "tpope/vim-abolish",
-  'wbthomason/packer.nvim',
   "mfussenegger/nvim-jdtls",
   "f-person/git-blame.nvim",
   "airblade/vim-gitgutter",
-  "jxnblk/vim-mdx-js",
   "tpope/vim-fugitive",
   "folke/which-key.nvim",
   'kabouzeid/nvim-lspinstall',

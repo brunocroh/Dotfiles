@@ -33,6 +33,9 @@ require("parrot").setup {
   cmd_prefix = "Ia",
   hooks = {
     Complete = function(prt, params)
+      for key, v in ipairs(params) do
+        print(key .. ': ' .. v)
+      end
       local template = [[
         I have the following code from {{filename}}:
 
