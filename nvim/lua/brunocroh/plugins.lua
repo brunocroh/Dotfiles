@@ -182,13 +182,6 @@ require("lazy").setup({
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
-  -- {
-  --   'jose-elias-alvarez/null-ls.nvim',
-  --   event = 'BufRead',
-  --   config = function()
-  --     require('brunocroh.plugins.lsp.null-ls')
-  --   end,
-  -- },
   {
     'windwp/nvim-autopairs',
     event = 'InsertCharPre',
