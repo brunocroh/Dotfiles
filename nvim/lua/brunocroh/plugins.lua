@@ -92,18 +92,15 @@ require("lazy").setup({
     main = "ibl",
     opts = {}
   },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
   {
     {
       'nvim-telescope/telescope.nvim',
       event = 'CursorHold',
+      lazy = true,
       dependencies = {
         "nvim-telescope/telescope-live-grep-args.nvim",
         "nvim-lua/plenary.nvim",
-        'nvim-telescope/telescope-symbols.nvim',
-        {
-          'nvim-telescope/telescope-fzf-native.nvim',
-          build = 'make',
-        },
       },
       config = function()
         require('brunocroh.plugins.telescope')
