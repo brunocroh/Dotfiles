@@ -1,4 +1,4 @@
-local cmp = require('cmp')
+local cmpModule = require('cmp')
 
 local icons = {
   Text = '',
@@ -33,20 +33,20 @@ local aliases = {
   luasnip = 'snippet',
 }
 
-cmp.setup({
-  mapping = cmp.mapping.preset.insert({
-    ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-    ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
+cmpModule.setup({
+  mapping = cmpModule.mapping.preset.insert({
+    ["<C-k>"] = cmpModule.mapping.select_prev_item(), -- previous suggestion
+    ["<C-j>"] = cmpModule.mapping.select_next_item(), -- next suggestion
+    ['<C-d>'] = cmpModule.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmpModule.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmpModule.mapping.complete(),
+    ['<C-e>'] = cmpModule.mapping.close(),
+    ['<CR>'] = cmpModule.mapping.confirm({
+      behavior = cmpModule.ConfirmBehavior.Replace,
       select = true
     }),
   }),
-  sources = cmp.config.sources({
+  sources = cmpModule.config.sources({
     { name = 'nvim_lsp', max_item_count = 100 },
     { name = 'luasnip', max_item_count = 10 },
     { name = 'path', max_item_count = 10 },
