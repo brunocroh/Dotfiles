@@ -53,6 +53,7 @@ require('nvim-tree').setup({
 })
 
 vim.keymap.set('n', '<leader>n', '<CMD>NvimTreeToggle<CR>')
+vim.keymap.set('n', '<F4>', '<CMD>NvimTreeToggle<CR>')
 
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('NVIM_TREE', { clear = true }),

@@ -9,6 +9,16 @@ require("lazy").setup({
   'MunifTanjim/prettier.nvim',
   'ap/vim-css-color',
   {
+    "/brunocroh/plugins/voice",
+    dev = true,
+    config = function()
+      require("voice").setup({
+        -- optional: customize the message
+        message = "Hello World!"
+      })
+    end
+  },
+  {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && yarn install",
