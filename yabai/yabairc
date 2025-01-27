@@ -82,3 +82,4 @@ yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 
 yabai -m config external_bar all:15:15
+
