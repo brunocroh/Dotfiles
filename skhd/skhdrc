@@ -9,10 +9,20 @@ alt - up : yabai -m window --focus stack.prev || yabai -m window --focus north
 alt - left : yabai -m window --focus west
 alt - right : yabai -m window --focus east
 
+alt - j : yabai -m window --focus stack.next || yabai -m window --focus south
+alt - k : yabai -m window --focus stack.prev || yabai -m window --focus north
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
 alt + shift - down : yabai -m window --warp south
-alt + shift - up : yabai -m window --warp north
+alt + shift - up : yabai -m window --warp northd
 alt + shift - left : yabai -m window --warp west
 alt + shift - right : yabai -m window --warp east
+
+alt + shift - j : yabai -m window --warp south
+alt + shift - k : yabai -m window --warp northd
+alt + shift - h : yabai -m window --warp west
+alt + shift - l : yabai -m window --warp east
 
 alt - 1 : yabai -m space --focus 1
 alt - 2 : yabai -m space --focus 2
