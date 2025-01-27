@@ -6,17 +6,14 @@ require("lazy").setup({
   "folke/which-key.nvim",
   'kabouzeid/nvim-lspinstall',
   'easymotion/vim-easymotion',
-  'MunifTanjim/prettier.nvim',
   'ap/vim-css-color',
   {
-    "/brunocroh/plugins/voice",
-    dev = true,
+    "brunocroh/open-link.nvim",
     config = function()
-      require("voice").setup({
-        -- optional: customize the message
-        message = "Hello World!"
+      require('open-link').setup({
+        key = '<leader>go',
       })
-    end
+    end,
   },
   {
     "iamcco/markdown-preview.nvim",

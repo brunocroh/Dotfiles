@@ -19,10 +19,9 @@ require("conform").setup({
       args = { "--indent-width", "2", "--indent-type", "Spaces", "-" },
     },
   },
-  format_on_save = {
+  format_after_save = {
     timeout_ms = 2000, -- Increase timeout to 5000ms (5 seconds)
     lsp_fallback = true,
-    async = false -- Set to false to ensure completion before saving
   },
 })
 
