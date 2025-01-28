@@ -18,14 +18,14 @@ set.number = true
 set.relativenumber = true
 
 set.incsearch = true
-set.hlsearch = true  -- highlight search
+set.hlsearch = true -- highlight search
 
 set.modifiable = true
 
 -- tabs
-set.tabstop= 2
-set.shiftwidth= 2
-set.softtabstop= 2
+set.tabstop = 2
+set.shiftwidth = 2
+set.softtabstop = 2
 set.expandtab = true
 
 require('brunocroh.keybinds')

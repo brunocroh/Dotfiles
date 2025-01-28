@@ -32,41 +32,7 @@ vim.diagnostic.config({
 })
 
 -- Lua
-lsp.lua_ls.setup({
-  flags = flags,
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      completion = {
-        enable = true,
-        showWord = 'Disable',
-        -- keywordSnippet = 'Disable',
-      },
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          os.getenv('VIMRUNTIME'),
-          vim.fn.expand("~/.luarocks/share/lua/5.4")
-
-        },
-        userThirdParty = {os.getenv("HOME") .. ".local/share/LuaAddons"},
-        checkThirdParty = "Apply"
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
+lsp.lua_ls.setup({})
 
 lsp.tailwindcss.setup({
   flags = flags,

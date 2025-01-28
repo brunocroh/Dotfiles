@@ -8,11 +8,23 @@ require("lazy").setup({
   'easymotion/vim-easymotion',
   'ap/vim-css-color',
   {
-    "brunocroh/open-link.nvim",
+    "/brunocroh/plugins/open-link.nvim",
+    dev = true,
     config = function()
       require('open-link').setup({
-        key = '<leader>go',
+        browserCmd = { '/usr/bin/open', '-a',  '/Applications/Firefox.app/' }
       })
+
+      vim.keymap.set({ "v" }, "<leader>go", "<cmd>OpenLink<cr>", { desc = "Open link in the browser" })
+    end,
+  },
+  {
+    -- "frankroeder/parrot.nvim",
+    "/brunocroh/plugins/parrot.nvim",
+    dev = true,
+    dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('brunocroh.plugins.parrot')
     end,
   },
   {
@@ -21,15 +33,9 @@ require("lazy").setup({
     build = "cd app && yarn install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
+
     end,
     ft = { "markdown" },
-  },
-  {
-    "frankroeder/parrot.nvim",
-    dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('brunocroh.plugins.parrot')
-    end,
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -124,6 +130,18 @@ require("lazy").setup({
     }
   },
   -- LSP --
+  --
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
   {
     'neovim/nvim-lspconfig',
     event = 'BufRead',
@@ -134,6 +152,17 @@ require("lazy").setup({
       {
         -- WARN: Unfortunately we won't be able to lazy load this
         'hrsh7th/cmp-nvim-lsp',
+      },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+          library = {
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
       },
     },
   },
