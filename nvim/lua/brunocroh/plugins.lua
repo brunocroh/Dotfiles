@@ -12,7 +12,7 @@ require("lazy").setup({
     dev = true,
     config = function()
       require('open-link').setup({
-        browserCmd = { '/usr/bin/open', '-a',  '/Applications/Firefox.app/' }
+        browserCmd = { '/usr/bin/open', '-a', '/Applications/Firefox.app/' }
       })
 
       vim.keymap.set({ "v" }, "<leader>go", "<cmd>OpenLink<cr>", { desc = "Open link in the browser" })
@@ -33,7 +33,6 @@ require("lazy").setup({
     build = "cd app && yarn install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
-
     end,
     ft = { "markdown" },
   },
@@ -82,6 +81,11 @@ require("lazy").setup({
     end,
   },
   {
+    'numToStr/Comment.nvim',
+    opts = {
+    }
+  },
+  {
     {
       'nvim-treesitter/nvim-treesitter',
       builD = ':TSUpdate',
@@ -114,19 +118,28 @@ require("lazy").setup({
   {
     'mattn/emmet-vim',
     config = function()
-      vim.g.user_emmet_leader_key=','
+      vim.g.user_emmet_leader_key = ','
       vim.g.user_emmet_settings = {
         indent_blockelement = 1,
       }
     end,
   },
-  'tpope/vim-surround',
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
   {
     'haorenW1025/completion-nvim',
     opt = true,
     dependencies = {
-      {'hrsh7th/vim-vsnip', opt = true},
-      {'hrsh7th/vim-vsnip-integ', opt = true}
+      { 'hrsh7th/vim-vsnip',       opt = true },
+      { 'hrsh7th/vim-vsnip-integ', opt = true }
     }
   },
   -- LSP --
@@ -231,6 +244,6 @@ require("lazy").setup({
       require('brunocroh.plugins.fidget')
     end
   },
-  { "folke/neoconf.nvim", cmd = "Neoconf" },
+  { "folke/neoconf.nvim",                       cmd = "Neoconf" },
   "folke/neodev.nvim",
 })

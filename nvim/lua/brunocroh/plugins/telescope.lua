@@ -5,7 +5,7 @@ local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
   defaults = {
-    path_display={"smart"},
+    path_display = { "smart" },
     prompt_prefix = ' ❯ ',
     initial_mode = 'insert',
     sorting_strategy = 'ascending',
@@ -31,14 +31,14 @@ telescope.setup({
     },
   },
   extensions = {
-    live_grep_args ={
+    live_grep_args = {
       auto_quoting = true
     },
     fzf = {
       fuzzy = true,
       override_generic_sorter = true, -- overrid the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = 'smart_case', -- "smart_case" | "ignore_case" | "respect_case"
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = 'smart_case',       -- "smart_case" | "ignore_case" | "respect_case"
     },
   },
 })
@@ -70,6 +70,7 @@ vim.keymap.set('n', '<leader>p', ctrlp)
 
 -- Get :help at the speed of light
 vim.keymap.set('n', '<leader>H', Telescope.help_tags)
+vim.keymap.set('n', "<leader>th", Telescope.help_tags)
 
 -- Fuzzy find active buffers
 vim.keymap.set('n', "<leader>b", Telescope.buffers)
