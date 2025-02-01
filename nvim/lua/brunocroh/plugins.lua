@@ -219,6 +219,12 @@ require("lazy").setup({
     end,
   },
   {
+    'simrat39/rust-tools.nvim',
+    config = function()
+      require('brunocroh.plugins.rust-tools')
+    end
+  },
+  {
     'windwp/nvim-autopairs',
     event = 'InsertCharPre',
     after = 'nvim-cmp',

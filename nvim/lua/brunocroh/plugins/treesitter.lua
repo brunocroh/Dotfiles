@@ -13,6 +13,7 @@ require('nvim-treesitter.configs').setup({
     'html',
     'css',
     'json',
+    'toml',
     'bash',
   },
   highlight = {
