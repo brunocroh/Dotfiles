@@ -2,7 +2,7 @@ alt - e : yabai -m space --layout bsp
 alt - s : yabai -m space --layout stack
 
 cmd + shift - return : open -n -a "Google Chrome"
-cmd - return : open -n -a "Alacritty"
+cmd - return : open -n -a "rio"
 
 alt - down : yabai -m window --focus stack.next || yabai -m window --focus south
 alt - up : yabai -m window --focus stack.prev || yabai -m window --focus north
