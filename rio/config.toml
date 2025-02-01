@@ -128,7 +128,7 @@
 # Example:
 [window]
 mode = "windowed"
-opacity = 0.6
+opacity = 0.8
 blur = false
 decorations = "enabled"
 
@@ -303,10 +303,11 @@ weight = 800
 # (considering if theme folder does exists and is being used)
 #
 # Example:
-# [colors]
+ [colors]
 # background = '#0F0D0E'
 # foreground = '#F9F4DA'
-# cursor = '#F38BA3'
+# cursor = 'd79921'
+cursor = '#FABD2F'
 # tabs = '#443d40'
 # tabs-active = '#F38BA3'
 # green = '#0BA95B'
