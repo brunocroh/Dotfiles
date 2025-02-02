@@ -7,6 +7,7 @@ require("lazy").setup({
   'kabouzeid/nvim-lspinstall',
   'easymotion/vim-easymotion',
   'ap/vim-css-color',
+  "tpope/vim-surround",
   {
     "/brunocroh/plugins/open-link.nvim",
     dev = true,
@@ -123,16 +124,6 @@ require("lazy").setup({
         indent_blockelement = 1,
       }
     end,
-  },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
   },
   {
     'haorenW1025/completion-nvim',
