@@ -65,7 +65,6 @@ local ctrlp = function()
 end
 
 
-vim.keymap.set('n', '<C-P>', ctrlp)
 vim.keymap.set('n', '<leader>p', ctrlp)
 
 -- Get :help at the speed of light

@@ -6,23 +6,36 @@ require("lazy").setup({
   "folke/which-key.nvim",
   'kabouzeid/nvim-lspinstall',
   'easymotion/vim-easymotion',
-  'ap/vim-css-color',
   "tpope/vim-surround",
   {
-    "/brunocroh/plugins/open-link.nvim",
-    dev = true,
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require('brunocroh.plugins.harpoon')
+    end
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end
+  },
+  {
+    "brunocroh/open-link.nvim",
+    -- dev = true,
     config = function()
       require('open-link').setup({
-        browserCmd = { '/usr/bin/open', '-a', '/Applications/Firefox.app/' }
+        -- browserCmd = { '/usr/bin/open', '-a', '/Applications/Firefox.app/' }
       })
 
       vim.keymap.set({ "v" }, "<leader>go", "<cmd>OpenLink<cr>", { desc = "Open link in the browser" })
     end,
   },
   {
-    -- "frankroeder/parrot.nvim",
-    "/brunocroh/plugins/parrot.nvim",
-    dev = true,
+    "frankroeder/parrot.nvim",
+    -- "/brunocroh/plugins/parrot.nvim",
+    -- dev = true,
     dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
     config = function()
       require('brunocroh.plugins.parrot')

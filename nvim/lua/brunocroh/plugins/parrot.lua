@@ -28,9 +28,9 @@ require("parrot").setup {
     -- xai = {
     --   api_key = os.getenv "XAI_API_KEY",
     -- },
-    deepseek = {
-      api_key = os.getenv "DEEPSEEK_API_KEY",
-    },
+    -- deepseek = {
+    --   api_key = os.getenv "DEEPSEEK_API_KEY",
+    -- },
   },
   cmd_prefix = "Ia",
   hooks = {
