@@ -9,7 +9,6 @@ export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/google-chrome-stable
 export ANDROID_SDK=/home/alphonse/Android/Sdk
 export ANDROID_SDK=/home/alphonse/Android/Sdk
-export GOPRIVATE="github.com/tradersclub"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
