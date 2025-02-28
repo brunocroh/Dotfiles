@@ -755,6 +755,9 @@ case "$1" in
    "Xcode")
         icon_result=":xcode:"
         ;;
+   "Simulator")
+        icon_result=":iphone_mirroring:"
+        ;;
    "Yandex Browser"  | "Yandex Browser" | "Yandex")
         icon_result=":yandex_bower:"
         ;;
