@@ -89,3 +89,10 @@ yabai -m config mouse_action2 resize
 
 yabai -m config external_bar all:15:15
 
+yabai -m signal --add event=window_created action="~/.config/yabai/zen-mode.sh"
+yabai -m signal --add event=window_destroyed action="~/.config/yabai/zen-mode.sh"
+yabai -m signal --add event=window_minimized action="~/.config/yabai/zen-mode.sh"
+yabai -m signal --add event=window_deminimized action="~/.config/yabai/zen-mode.sh"
+
+
+
