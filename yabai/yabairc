@@ -95,4 +95,4 @@ yabai -m signal --add event=window_minimized action="~/.config/yabai/zen-mode.sh
 yabai -m signal --add event=window_deminimized action="~/.config/yabai/zen-mode.sh"
 
 
-
+borders active_color=0xfffbaf02 inactive_color=0xff282828 width=5.0 &
