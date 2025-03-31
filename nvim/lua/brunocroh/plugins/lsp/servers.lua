@@ -21,6 +21,8 @@ end
 -- Disable LSP logging
 vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
 
+
+
 -- Configuring native diagnostics
 vim.diagnostic.config({
   virtual_text = {
@@ -38,6 +40,12 @@ lsp.tailwindcss.setup({
   flags = flags,
   capabilities = capabilities,
   on_attach = on_attach,
+  filetypes = {
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+    'html',
+  }
 })
 
 lsp.ts_ls.setup({
@@ -52,6 +60,9 @@ lsp.ts_ls.setup({
   single_file_support = true,
 })
 
+
+-- Graphql
+lsp.graphql.setup({})
 
 
 -- Rust
@@ -79,36 +90,7 @@ lsp.rust_analyzer.setup({
   },
 })
 
-lsp.eslint.setup({
-  flags = flags,
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    -- Call the common on_attach function
-    on_attach(client, bufnr)
-    -- Enable formatting
-    client.server_capabilities.documentFormattingProvider = true
-    -- Optional: Automatically fix ESLint issues on save
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      callback = function()
-        -- Only run if eslint_d is available
-        if vim.fn.executable('eslint_d') == 1 then
-          local fileName = vim.api.nvim_buf_get_name(0)
-          vim.fn.system('eslint_d --fix ' .. vim.fn.shellescape(fileName))
-          -- Reload the buffer if it was modified
-          vim.cmd('checktime')
-        else
-          vim.cmd('EslintFixAll')
-        end
-      end,
-    })
-  end,
-  settings = {
-    packageManager = 'npm', -- or 'yarn', 'pnpm'
-    -- Optional: specify additional rules directories
-    workingDirectory = { mode = 'auto' },
-  },
-})
+lsp.eslint.setup({})
 
 ---List of the LSP server that don't need special configuration
 local servers = {
@@ -132,4 +114,3 @@ for _, server in ipairs(servers) do
 end
 
 lsp.gdscript.setup({})
-lsp.tailwindcss.setup({})

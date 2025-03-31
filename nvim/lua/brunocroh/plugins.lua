@@ -33,9 +33,9 @@ require("lazy").setup({
     end,
   },
   {
-    "frankroeder/parrot.nvim",
-    -- "/brunocroh/plugins/parrot.nvim",
-    -- dev = true,
+    -- "frankroeder/parrot.nvim",
+    "/brunocroh/plugins/parrot.nvim",
+    dev = true,
     dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
     config = function()
       require('brunocroh.plugins.parrot')

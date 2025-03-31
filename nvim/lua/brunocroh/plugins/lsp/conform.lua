@@ -11,9 +11,9 @@ require("conform").setup({
     html = { "prettierd" },
     json = { "prettierd" },
     yaml = { "prettierd" },
-    graphql = { "prettierd" },
     md = { "prettierd" },
     txt = { "prettierd" },
+    go = { "gofmt" },
   },
   formatters = {
     stylua = {
