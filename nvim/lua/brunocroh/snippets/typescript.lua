@@ -13,17 +13,22 @@ ls.add_snippets("typescriptreact", {
   ),
 
   s(
-    'useS',
+    'useState',
     fmt('const [{},] = useState() ', i(1))
   ),
 
   s(
-    'useE',
+    'useEffect',
     fmt('useEffect(() => {{ {} }}, [])', i(1))
   ),
 
   s(
-    'useC',
+    'useCallback',
     fmt('useCallback(() => {{ {} }}, [])', i(1))
+  ),
+
+  s(
+    'useMemo',
+    fmt('useMemo(() => {{ {} }}, [])', i(1))
   ),
 })
