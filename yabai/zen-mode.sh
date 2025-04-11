@@ -6,7 +6,7 @@ if [[ $windows == 1 ]]; then
   yabai -m config --space $space right_padding 600
   yabai -m space --space $space --balance
 else
-  yabai -m config --space $space left_padding 4
-  yabai -m config --space $space right_padding 4
+  yabai -m config --space $space left_padding 12
+  yabai -m config --space $space right_padding 12
   yabai -m space --space $space --balance
 fi
