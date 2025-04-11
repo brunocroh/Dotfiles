@@ -20,10 +20,10 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /
 
 # Setting up the general bar appearance of the bar
 bar=(
-  corner_radius=25
+  corner_radius=10
   height=45
   color=$BAR_COLOR
-  border_width=1
+  border_width=2.5
   border_color=$BAR_BORDER_COLOR
   shadow=on
   position=top
