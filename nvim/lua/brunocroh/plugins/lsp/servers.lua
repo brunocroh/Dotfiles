@@ -45,6 +45,16 @@ lsp.tailwindcss.setup({
     'typescriptreact',
     'typescript.tsx',
     'html',
+  },
+  setttings = {
+    experimental = {
+      classRegex = {
+        { "cva\\(([^)]*)\\)",  "[\"'`]([^\"'`]*).*?[\"'`]" },
+        { "cx\\(([^)]*)\\)",   "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+        { "cn\\(([^)]*)\\)",   "[\"'`]([^\"'`]*).*?[\"'`]" },
+        { "([a-zA-Z0-9\\-:]+)" },
+      },
+    }
   }
 })
 
@@ -94,14 +104,13 @@ lsp.eslint.setup({})
 
 ---List of the LSP server that don't need special configuration
 local servers = {
-  'zls',      -- Zig
-  'gopls',    -- Golang
-  'ts_ls',    -- Typescript
-  'html',     -- HTML
-  'cssls',    -- CSS
-  'jsonls',   -- Json
-  'yamlls',   -- YAML
-  'emmet_ls', -- emmet-ls
+  'zls',    -- Zig
+  'gopls',  -- Golang
+  'ts_ls',  -- Typescript
+  'html',   -- HTML
+  'cssls',  -- CSS
+  'jsonls', -- Json
+  'yamlls', -- YAML
   -- 'terraformls', -- Terraform
 }
 

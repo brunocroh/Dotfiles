@@ -12,6 +12,25 @@ ls.add_snippets("typescriptreact", {
   ),
 
   s(
+    'log',
+    fmt("console.log({{{1}: {2}}})", { i(1), i(2) })
+  ),
+
+  s(
+    'afn',
+    fmt(
+      [[
+      const {1} = () => {{
+        {2}
+      }}
+      ]]
+      , {
+        i(1),
+        i(2)
+      })
+  ),
+
+  s(
     'useState',
     fmt('const [{},] = useState() ', i(1))
   ),

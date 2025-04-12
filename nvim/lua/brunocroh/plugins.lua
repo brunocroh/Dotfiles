@@ -8,6 +8,12 @@ require("lazy").setup({
   'easymotion/vim-easymotion',
   "tpope/vim-surround",
   {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
+  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -33,9 +39,9 @@ require("lazy").setup({
     end,
   },
   {
-    -- "frankroeder/parrot.nvim",
-    "/brunocroh/plugins/parrot.nvim",
-    dev = true,
+    "frankroeder/parrot.nvim",
+    -- "/brunocroh/plugins/parrot.nvim",
+    -- dev = true,
     dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
     config = function()
       require('brunocroh.plugins.parrot')
@@ -197,12 +203,6 @@ require("lazy").setup({
           config = function()
             require('brunocroh.plugins.lsp.luasnip')
           end,
-          dependencies = {
-            {
-              'rafamadriz/friendly-snippets',
-              event = 'CursorHold',
-            },
-          },
         },
         'saadparwaiz1/cmp_luasnip',
         'hrsh7th/Cmp-path',
