@@ -47,8 +47,10 @@ alt + shift - 8 : yabai -m window --space 8
 alt + shift - o : yabai -m window --space 7
 
 alt - f : yabai -m window --toggle zoom-fullscreen
+alt + shift - f : yabai -m window --toggle float
 
 alt - r         : yabai -m space --rotate 270
 shift + alt - r : yabai -m space --rotate 90
 
-alt + shift - f : yabai -m window --toggle float
+alt - z         : yabai -m space --balance
+
