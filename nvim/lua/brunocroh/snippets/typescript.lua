@@ -1,9 +1,19 @@
-require("luasnip.session.snippet_collection").clear_snippets "typescript"
+require("luasnip.session.snippet_collection").clear_snippets "typescriptreact"
 
 local ls = require('luasnip')
 local s = ls.snippet
 local i = ls.insert_node
+local f = ls.function_node
 local fmt = require('luasnip.extras.fmt').fmt
+
+local same = function(index, prefix)
+  return f(function(arg)
+    if type(arg[1][1]) == "string" then
+      return prefix .. (arg[1][1]:gsub("^%l", string.upper))
+    end
+    return arg[1]
+  end, { index })
+end
 
 ls.add_snippets("typescriptreact", {
   s(
@@ -50,7 +60,7 @@ ls.add_snippets("typescriptreact", {
 
   s(
     'useState',
-    fmt('const [{},] = useState() ', i(1))
+    fmt('const [{1},{2}] = useState({3})', { i(1), same(1, "set"), i(3, "null") })
   ),
 
   s(

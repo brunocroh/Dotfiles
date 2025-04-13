@@ -3,18 +3,18 @@ local ls = require('luasnip')
 
 
 ls.setup({
-    ext_opts = {
-        [types.choiceNode] = {
-            active = {
-                virt_text = { { '●', 'DiffAdd' } },
-            },
-        },
-        [types.insertNode] = {
-            active = {
-                virt_text = { { '●', 'DiffDelete' } },
-            },
-        },
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { '●', 'DiffAdd' } },
+      },
     },
+    [types.insertNode] = {
+      active = {
+        virt_text = { { '●', 'DiffDelete' } },
+      },
+    },
+  },
 })
 
 ls.config.set_config {
@@ -23,8 +23,6 @@ ls.config.set_config {
   override_builtin = true,
 }
 
--- Loading any vscode snippets from plugins
-require('luasnip.loaders.from_vscode').lazy_load()
 for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/brunocroh/snippets/*.lua", true)) do
   loadfile(ft_path)()
 end
@@ -40,7 +38,7 @@ vim.keymap.set({ 'i', 's' }, '<C-k>', function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
   end
-end, { silent = true})
+end, { silent = true })
 vim.keymap.set({ 'i', 's' }, '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>')
 vim.keymap.set({ 'i', 's' }, '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>')
 vim.keymap.set({ "i", "s" }, "<C-n>", function()
@@ -54,6 +52,3 @@ vim.keymap.set({ "i", "s" }, "<C-p>", function()
     require("luasnip").change_choice(-1)
   end
 end, { silent = true })
-
-
-
