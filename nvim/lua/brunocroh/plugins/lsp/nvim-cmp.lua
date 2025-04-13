@@ -1,4 +1,5 @@
-local cmpModule = require('cmp')
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 local icons = {
   Text = '',
@@ -33,24 +34,54 @@ local aliases = {
   luasnip = 'snippet',
 }
 
-cmpModule.setup({
-  mapping = cmpModule.mapping.preset.insert({
-    ["<C-k>"] = cmpModule.mapping.select_prev_item(), -- previous suggestion
-    ["<C-j>"] = cmpModule.mapping.select_next_item(), -- next suggestion
-    ['<C-d>'] = cmpModule.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmpModule.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmpModule.mapping.complete(),
-    ['<C-e>'] = cmpModule.mapping.close(),
-    ['<CR>'] = cmpModule.mapping.confirm({
-      behavior = cmpModule.ConfirmBehavior.Replace,
-      select = true
-    }),
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+    ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        if luasnip.expandable() then
+          luasnip.expand()
+        else
+          cmp.confirm({
+            select = true,
+          })
+        end
+      else
+        fallback()
+      end
+    end),
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   }),
-  sources = cmpModule.config.sources({
+  sources = cmp.config.sources({
     { name = 'nvim_lsp', max_item_count = 100 },
-    { name = 'luasnip', max_item_count = 10 },
-    { name = 'path', max_item_count = 10 },
-    { name = 'buffer', max_item_count = 10 },
+    { name = 'luasnip',  max_item_count = 10 },
+    { name = 'path',     max_item_count = 10 },
+    { name = 'buffer',   max_item_count = 10 },
   }),
   snippet = {
     expand = function(args)

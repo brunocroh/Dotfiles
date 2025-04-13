@@ -12,6 +12,11 @@ ls.add_snippets("typescriptreact", {
   ),
 
   s(
+    'frag',
+    fmt('<>{1}</>{2}', { i(1), i(2) })
+  ),
+
+  s(
     'log',
     fmt("console.log({{{1}: {2}}})", { i(1), i(2) })
   ),
@@ -28,6 +33,19 @@ ls.add_snippets("typescriptreact", {
         i(1),
         i(2)
       })
+  ),
+
+  s(
+    'af',
+    fmt(
+      [[
+      () => {{
+        {1}
+      }}
+      ]]
+      ,
+      i(1)
+    )
   ),
 
   s(
