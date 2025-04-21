@@ -32,6 +32,23 @@ ls.add_snippets("typescriptreact", {
   ),
 
   s(
+    'try',
+    fmt(
+      [[
+      try {{
+        {1}
+      }} catch({2}) {{
+        {3}
+      }}
+      ]]
+      , {
+        i(1),
+        i(2),
+        i(3)
+      })
+  ),
+
+  s(
     'afn',
     fmt(
       [[
