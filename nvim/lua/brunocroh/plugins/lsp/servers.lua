@@ -63,7 +63,9 @@ lsp.ts_ls.setup({
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = {
     'typescript',
+    'javascript',
     'typescriptreact',
+    'javascriptreact',
     'typescript.tsx',
   },
   root_dir = lsp.util.root_pattern('tsconfig.json', 'package.json'),
@@ -105,8 +107,6 @@ lsp.eslint.setup({})
 ---List of the LSP server that don't need special configuration
 local servers = {
   'zls',    -- Zig
-  'gopls',  -- Golang
-  'ts_ls',  -- Typescript
   'html',   -- HTML
   'cssls',  -- CSS
   'jsonls', -- Json

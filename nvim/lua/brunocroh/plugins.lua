@@ -1,5 +1,6 @@
 require("lazy").setup({
   "mfussenegger/nvim-jdtls",
+  "tpope/vim-abolish",
   "f-person/git-blame.nvim",
   "airblade/vim-gitgutter",
   "tpope/vim-fugitive",
