@@ -104,15 +104,21 @@ lsp.rust_analyzer.setup({
 
 lsp.eslint.setup({})
 
+-- lsp.gopls.setup({})
+
 ---List of the LSP server that don't need special configuration
 local servers = {
   'zls',    -- Zig
   'html',   -- HTML
+  'ts_ls',  -- Typescript
+  'gopls',  -- Gopls
   'cssls',  -- CSS
   'jsonls', -- Json
   'yamlls', -- YAML
   -- 'terraformls', -- Terraform
 }
+
+lsp.gdscript.setup({})
 
 for _, server in ipairs(servers) do
   lsp[server].setup({
@@ -121,5 +127,3 @@ for _, server in ipairs(servers) do
     on_attach = on_attach,
   })
 end
-
-lsp.gdscript.setup({})

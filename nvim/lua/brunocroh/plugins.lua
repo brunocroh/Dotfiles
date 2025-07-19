@@ -174,6 +174,9 @@ require("lazy").setup({
     end,
     dependencies = {
       {
+        'williamboman/mason.nvim',
+      },
+      {
         -- WARN: Unfortunately we won't be able to lazy load this
         'hrsh7th/cmp-nvim-lsp',
       },
