@@ -104,6 +104,7 @@ lsp.rust_analyzer.setup({
 
 lsp.eslint.setup({})
 
+
 -- lsp.gopls.setup({})
 
 ---List of the LSP server that don't need special configuration
@@ -114,8 +115,7 @@ local servers = {
   'gopls',  -- Gopls
   'cssls',  -- CSS
   'jsonls', -- Json
-  'yamlls', -- YAML
-  -- 'terraformls', -- Terraform
+  'biome',  -- Json
 }
 
 lsp.gdscript.setup({})

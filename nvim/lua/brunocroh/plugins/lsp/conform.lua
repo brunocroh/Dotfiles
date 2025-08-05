@@ -10,7 +10,6 @@ require("conform").setup({
     markdown = { "prettierd" },
     html = { "prettierd" },
     json = { "prettierd" },
-    yaml = { "prettierd" },
     md = { "prettierd" },
     txt = { "prettierd" },
     go = { "gofmt" },

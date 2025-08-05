@@ -13,6 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local set = vim.opt
 
+vim.g.editorconfig = true
+
 set.mouse = "a"
 set.number = true
 set.relativenumber = true
