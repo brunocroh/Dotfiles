@@ -1,4 +1,5 @@
 require("lazy").setup({
+  { 'wakatime/vim-wakatime',                    lazy = false },
   "mfussenegger/nvim-jdtls",
   "tpope/vim-abolish",
   "f-person/git-blame.nvim",
@@ -8,12 +9,6 @@ require("lazy").setup({
   'kabouzeid/nvim-lspinstall',
   'easymotion/vim-easymotion',
   "tpope/vim-surround",
-  {
-    "nvzone/typr",
-    dependencies = "nvzone/volt",
-    opts = {},
-    cmd = { "Typr", "TyprStats" },
-  },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -258,6 +253,6 @@ require("lazy").setup({
       require('brunocroh.plugins.fidget')
     end
   },
-  { "folke/neoconf.nvim",                       cmd = "Neoconf" },
+  { "folke/neoconf.nvim", cmd = "Neoconf" },
   "folke/neodev.nvim",
 })
