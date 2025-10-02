@@ -1,3 +1,4 @@
+local util = require('lspconfig.util')
 local U = require('brunocroh.plugins.lsp.utils')
 
 ---Common perf related flags for all the LSP servers
@@ -50,6 +51,19 @@ for _, server in ipairs(servers) do
   vim.lsp.enable(server)
 end
 
+
+for _, server in ipairs(servers) do
+  vim.lsp.config(server, {
+    capabilities = capabilities
+
+  })
+end
+
+vim.lsp.config('*', {
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 vim.lsp.config('luals', {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
@@ -65,8 +79,6 @@ vim.lsp.config('luals', {
 
 vim.lsp.config('tailwindcss', {
   flags = flags,
-  capabilities = capabilities,
-  on_attach = on_attach,
   filetypes = {
     'typescript',
     'typescriptreact',
