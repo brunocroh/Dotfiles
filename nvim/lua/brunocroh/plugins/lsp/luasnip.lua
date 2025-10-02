@@ -1,7 +1,6 @@
 local types = require('luasnip.util.types')
 local ls = require('luasnip')
 
-
 ls.setup({
   ext_opts = {
     [types.choiceNode] = {

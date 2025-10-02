@@ -1,4 +1,3 @@
-local util = require('lspconfig.util')
 local U = require('brunocroh.plugins.lsp.utils')
 
 ---Common perf related flags for all the LSP servers
@@ -42,8 +41,8 @@ local servers = {
   'yamlls',        -- YAML
   'gdscript',      -- GodotLanguage
   'eslint',        -- Eslint
+  'lua_ls', -- Lua
   'graphql',       -- GraphQL
-  'luals',         -- Lua
   'rust_analyzer', -- Rust
 }
 
@@ -54,19 +53,6 @@ end
 vim.lsp.config('*', {
   capabilities = capabilities,
   on_attach = on_attach,
-})
-
-vim.lsp.config('luals', {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
-  root_markers = { { 'luarc.json', '.luarc.jsonc' }, '.git' },
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT'
-      }
-    }
-  }
 })
 
 vim.lsp.config('tailwindcss', {
