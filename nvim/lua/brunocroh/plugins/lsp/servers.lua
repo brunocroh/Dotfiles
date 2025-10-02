@@ -1,4 +1,4 @@
-local lsp = require('lspconfig')
+local lspUtil = require("lspconfig.util")
 local U = require('brunocroh.plugins.lsp.utils')
 
 ---Common perf related flags for all the LSP servers
@@ -21,8 +21,6 @@ end
 -- Disable LSP logging
 vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
 
-
-
 -- Configuring native diagnostics
 vim.diagnostic.config({
   virtual_text = {
@@ -34,9 +32,8 @@ vim.diagnostic.config({
 })
 
 -- Lua
-lsp.lua_ls.setup({})
 
-lsp.tailwindcss.setup({
+vim.lsp.config('tailwindcss', {
   flags = flags,
   capabilities = capabilities,
   on_attach = on_attach,
@@ -58,72 +55,22 @@ lsp.tailwindcss.setup({
   }
 })
 
-lsp.ts_ls.setup({
-  init_options = { hostInfo = 'neovim' },
-  cmd = { 'typescript-language-server', '--stdio' },
-  filetypes = {
-    'typescript',
-    'javascript',
-    'typescriptreact',
-    'javascriptreact',
-    'typescript.tsx',
-  },
-  root_dir = lsp.util.root_pattern('tsconfig.json', 'package.json'),
-  single_file_support = true,
-})
-
-
--- Graphql
-lsp.graphql.setup({})
-
-
--- Rust
-lsp.rust_analyzer.setup({
-  flags = flags,
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        allFeatures = true,
-      },
-      checkOnSave = {
-        allFeatures = true,
-        command = 'clippy',
-      },
-      procMacro = {
-        ignored = {
-          ['async-trait'] = { 'async_trait' },
-          ['napi-derive'] = { 'napi' },
-          ['async-recursion'] = { 'async_recursion' },
-        },
-      },
-    },
-  },
-})
-
-lsp.eslint.setup({})
-
-
--- lsp.gopls.setup({})
-
 ---List of the LSP server that don't need special configuration
 local servers = {
-  'zls',    -- Zig
-  'html',   -- HTML
-  'ts_ls',  -- Typescript
-  'gopls',  -- Gopls
-  'cssls',  -- CSS
-  'jsonls', -- Json
-  'biome',  -- Json
+  'zls',           -- Zig
+  'html',          -- HTML
+  'ts_ls',         -- Typescript
+  'gopls',         -- Gopls
+  'cssls',         -- CSS
+  'jsonls',        -- Json
+  'yamlls',        -- YAML
+  'gdscript',      -- GodotLanguage
+  'eslint',        -- Eslint
+  'graphql',       -- GraphQL
+  'luals',         -- Lua
+  'rust_analyzer', -- Rust
 }
 
-lsp.gdscript.setup({})
-
 for _, server in ipairs(servers) do
-  lsp[server].setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
+  vim.lsp.enable(server)
 end
