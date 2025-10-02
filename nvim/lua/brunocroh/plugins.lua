@@ -166,8 +166,7 @@ require("lazy").setup({
       {
         -- WARN: Unfortunately we won't be able to lazy load this
         'hrsh7th/cmp-nvim-lsp',
-      },
-      {
+      },{
         "folke/lazydev.nvim",
         ft = "lua", -- only load on lua files
         opts = {
@@ -231,12 +230,6 @@ require("lazy").setup({
     'williamboman/mason.nvim',
     config = function()
       require('brunocroh.plugins.mason')
-    end
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require('brunocroh.plugins.mason-lspconfig')
     end
   },
   {
