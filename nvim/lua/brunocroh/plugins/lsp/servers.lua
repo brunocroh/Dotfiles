@@ -1,4 +1,3 @@
-local lspUtil = require("lspconfig.util")
 local U = require('brunocroh.plugins.lsp.utils')
 
 ---Common perf related flags for all the LSP servers
@@ -31,7 +30,38 @@ vim.diagnostic.config({
   },
 })
 
--- Lua
+---List of the LSP server that don't need special configuration
+local servers = {
+  'zls',           -- Zig
+  'html',          -- HTML
+  'ts_ls',         -- Typescript
+  'gopls',         -- Gopls
+  'cssls',         -- CSS
+  'jsonls',        -- Json
+  'yamlls',        -- YAML
+  'gdscript',      -- GodotLanguage
+  'eslint',        -- Eslint
+  'graphql',       -- GraphQL
+  'luals',         -- Lua
+  'rust_analyzer', -- Rust
+}
+
+for _, server in ipairs(servers) do
+  vim.lsp.enable(server)
+end
+
+vim.lsp.config('luals', {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { { 'luarc.json', '.luarc.jsonc' }, '.git' },
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT'
+      }
+    }
+  }
+})
 
 vim.lsp.config('tailwindcss', {
   flags = flags,
@@ -54,23 +84,3 @@ vim.lsp.config('tailwindcss', {
     }
   }
 })
-
----List of the LSP server that don't need special configuration
-local servers = {
-  'zls',           -- Zig
-  'html',          -- HTML
-  'ts_ls',         -- Typescript
-  'gopls',         -- Gopls
-  'cssls',         -- CSS
-  'jsonls',        -- Json
-  'yamlls',        -- YAML
-  'gdscript',      -- GodotLanguage
-  'eslint',        -- Eslint
-  'graphql',       -- GraphQL
-  'luals',         -- Lua
-  'rust_analyzer', -- Rust
-}
-
-for _, server in ipairs(servers) do
-  vim.lsp.enable(server)
-end
