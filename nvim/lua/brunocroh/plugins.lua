@@ -118,7 +118,6 @@ require("lazy").setup({
     main = "ibl",
     opts = {}
   },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
   {
     {
       'nvim-telescope/telescope.nvim',
@@ -127,6 +126,7 @@ require("lazy").setup({
       dependencies = {
         "nvim-telescope/telescope-live-grep-args.nvim",
         "nvim-lua/plenary.nvim",
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
       },
       config = function()
         require('brunocroh.plugins.telescope')
@@ -211,12 +211,6 @@ require("lazy").setup({
       -- If you want the formatexpr, here is the place to set it
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
-  },
-  {
-    'simrat39/rust-tools.nvim',
-    config = function()
-      require('brunocroh.plugins.rust-tools')
-    end
   },
   {
     'windwp/nvim-autopairs',

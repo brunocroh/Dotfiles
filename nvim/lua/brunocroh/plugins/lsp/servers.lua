@@ -44,6 +44,8 @@ local servers = {
   'lua_ls', -- Lua
   'graphql',       -- GraphQL
   'rust_analyzer', -- Rust
+  'kotlin_language_server', -- Kotlin
+  'jdtls', -- Java
 }
 
 for _, server in ipairs(servers) do
