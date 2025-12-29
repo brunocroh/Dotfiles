@@ -81,6 +81,6 @@ vim.keymap.set("n", "<leader>i", ":lua require('telescope').extensions.live_grep
 -- Fuzzy find changed files in git
 vim.keymap.set('n', "<leader>o", Telescope.git_status)
 
-vim.keymap.set("n", "<space>en", function()
-  builtin.find_files { cwd = "~/.config/nvim/" }
-end)
+-- vim.keymap.set("n", "<space>en", function()
+--   builtin.find_files { cwd = "~/.config/nvim/" }
+-- end)

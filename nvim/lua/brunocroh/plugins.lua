@@ -1,5 +1,5 @@
 require("lazy").setup({
-  { 'wakatime/vim-wakatime',                    lazy = false },
+  { 'wakatime/vim-wakatime', lazy = false },
   "mfussenegger/nvim-jdtls",
   "tpope/vim-abolish",
   "f-person/git-blame.nvim",
@@ -9,6 +9,22 @@ require("lazy").setup({
   'kabouzeid/nvim-lspinstall',
   'easymotion/vim-easymotion',
   "tpope/vim-surround",
+  'nvim-neotest/nvim-nio',
+  'rcarriga/nvim-dap-ui',
+  {
+    "mfussenegger/nvim-dap",
+    lazy = true,
+    config = function()
+      require('brunocroh.plugins.dap.config')
+    end
+  },
+  {
+    "leoluz/nvim-dap-go",
+    lazy = true,
+    config = function()
+      require('dap-go').setup()
+    end
+  },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
