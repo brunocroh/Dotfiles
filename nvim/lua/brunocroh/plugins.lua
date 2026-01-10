@@ -13,14 +13,13 @@ require("lazy").setup({
   'rcarriga/nvim-dap-ui',
   {
     "mfussenegger/nvim-dap",
-    lazy = true,
     config = function()
       require('brunocroh.plugins.dap.config')
     end
   },
   {
     "leoluz/nvim-dap-go",
-    lazy = true,
+    dependencies = { "mfussenegger/nvim-dap" },
     config = function()
       require('dap-go').setup()
     end

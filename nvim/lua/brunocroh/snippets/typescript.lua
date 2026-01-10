@@ -109,4 +109,17 @@ ls.add_snippets("typescriptreact", {
     'useMemo',
     fmt('useMemo(() => {{ {} }}, [])', i(1))
   ),
+
+  s(
+    'logJSON',
+    fmt(
+      [[
+      console.log("=========")
+      console.log({1}, null, 2)
+      console.log("=========")
+      ]]
+      ,
+      i(1)
+    )
+  ),
 })

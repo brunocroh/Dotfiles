@@ -73,7 +73,7 @@ vim.keymap.set('n', "<leader>th", Telescope.help_tags)
 
 -- Fuzzy find active buffers
 vim.keymap.set('n', "<leader>b", Telescope.buffers)
-vim.keymap.set('n', "<leader>d", Telescope.diagnostics)
+vim.keymap.set('n', "<leader>u", Telescope.diagnostics)
 
 -- Search for string
 vim.keymap.set("n", "<leader>i", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
