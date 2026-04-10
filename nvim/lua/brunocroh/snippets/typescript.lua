@@ -1,6 +1,7 @@
 require("luasnip.session.snippet_collection").clear_snippets "typescriptreact"
 
 local ls = require('luasnip')
+local t = require("luasnip.nodes.textNode").T
 local s = ls.snippet
 local i = ls.insert_node
 local f = ls.function_node
@@ -44,7 +45,6 @@ ls.add_snippets("typescriptreact", {
         i(2)
       })
   ),
-
 
   s(
     'try',
@@ -121,5 +121,14 @@ ls.add_snippets("typescriptreact", {
       ,
       i(1)
     )
+  ),
+
+  s(
+    'bypass',
+    t({
+      'if (typeof userToken === "string") {',
+      '  userToken = JSON.parse(userToken);',
+      '}',
+    })
   ),
 })

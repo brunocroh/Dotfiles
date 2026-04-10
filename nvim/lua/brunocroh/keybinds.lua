@@ -1,12 +1,11 @@
 vim.g.mapleader = ' '
 
-local function map(m, k, v)
-    vim.keymap.set(m, k, v, { silent = true })
+local function map(m, k, v, op)
+    vim.keymap.set(m, k, v, op or {silent = true})
 end
 
 map('n', '<leader>Q', '<cmd>q!<CR>')
 map('n', '<leader>q', '<cmd>wq<CR>')
--- map('n', '<leader>w', '<cmd>w<CR>')
 map('n', '<leader>s', '<cmd>update<CR>')
 map('n', '<leader>t', '<cmd>LspStart tsserver<CR>')
 map('n', '<leader>f', '<cmd>cope<CR>')
@@ -17,6 +16,20 @@ vim.api.nvim_set_keymap('n', '<leader><leader>r', ':luafile ~/.config/nvim/init.
 
 map('n', '<leader>x', '<cmd>:.lua<CR>')
 map('v', '<leader>x', '<cmd>:lua<CR>')
+
+map('n', '<C-j>', '<cmd>:cnext<CR>')
+map('n', '<C-k>', '<cmd>:cprev<CR>')
+
+local qf_open = 0
+map('n', '<C-q>', function ()
+  if qf_open == 1 then
+    vim.cmd('cclose')
+    qf_open = 0
+  else
+    vim.cmd('copen')
+    qf_open = 1
+  end
+end, { desc = 'toggle quickfix list'})
 
 vim.g.user_emmet_leader_key=','
 vim.g.user_emmet_settings = {

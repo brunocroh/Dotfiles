@@ -217,7 +217,7 @@ require("parrot").setup {
           changes in more detail.
 
           Here are the changes that should be considered by this message:
-          ]] .. vim.fn.system "git diff --no-color --no-ext-diff --staged"
+          ]] .. vim.fn.system "git diff --no-color --no-ext-diff --staged -- . ':!package-lock.json'"
         local model_obj = prt.get_model "command"
         prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
       end
@@ -253,3 +253,4 @@ vim.keymap.set({ "n" }, "<F3>x", "<cmd>IaContext<cr>", { desc = "Open context fi
 vim.keymap.set({ "n" }, "<F3>n", "<cmd>IaModel<cr>", { desc = "Select model" })
 vim.keymap.set({ "n" }, "<F3>p", "<cmd>IaProvider<cr>", { desc = "Select provider" })
 vim.keymap.set({ "n" }, "<F3>q", "<cmd>IaAsk<cr>", { desc = "Ask a question" })
+vim.keymap.set({ "v" }, "<F3>r", ":<C-u>'<,'>IaRewrite<cr>", { desc = "Retry last prompt" })
