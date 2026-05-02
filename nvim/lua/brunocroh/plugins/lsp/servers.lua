@@ -49,11 +49,11 @@ local servers = {
 }
 
 for _, server in ipairs(servers) do
-  vim.lsp.enable(server)
   vim.lsp.config(server, {
     capabilities = capabilities,
     on_attach = on_attach,
   })
+  vim.lsp.enable(server)
 end
 
 vim.lsp.config('tailwindcss', {

@@ -17,8 +17,10 @@ vim.api.nvim_set_keymap('n', '<leader><leader>r', ':luafile ~/.config/nvim/init.
 map('n', '<leader>x', '<cmd>:.lua<CR>')
 map('v', '<leader>x', '<cmd>:lua<CR>')
 
-map('n', '<C-j>', '<cmd>:cnext<CR>')
-map('n', '<C-k>', '<cmd>:cprev<CR>')
+map('n', '<C-j>', '<cmd>:cnext<CR>zz')
+map('n', '<C-k>', '<cmd>:cprev<CR>zz')
+map("n", "<Tab>", ":tabnext<CR>")
+map("n", "<S-Tab>", ":tabprev<CR>")
 
 local qf_open = 0
 map('n', '<C-q>', function ()
