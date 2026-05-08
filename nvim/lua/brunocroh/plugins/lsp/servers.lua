@@ -32,20 +32,21 @@ vim.diagnostic.config({
 
 ---List of the LSP server that don't need special configuration
 local servers = {
-  'zls',           -- Zig
-  'html',          -- HTML
-  'ts_ls',         -- Typescript
-  'gopls',         -- Gopls
-  'cssls',         -- CSS
-  'jsonls',        -- Json
-  'yamlls',        -- YAML
-  'gdscript',      -- GodotLanguage
-  'eslint',        -- Eslint
-  'lua_ls', -- Lua
-  'graphql',       -- GraphQL
-  'rust_analyzer', -- Rust
+  'zls',                    -- Zig
+  'html',                   -- HTML
+  'ts_ls',                  -- Typescript
+  'gopls',                  -- Gopls
+  'cssls',                  -- CSS
+  'jsonls',                 -- Json
+  'yamlls',                 -- YAML
+  'gdscript',               -- GodotLanguage
+  'eslint',                 -- Eslint
+  'lua_ls',                 -- Lua
+  'graphql',                -- GraphQL
+  'rust_analyzer',          -- Rust
   'kotlin_language_server', -- Kotlin
-  'jdtls', -- Java
+  'jdtls',                  -- Java
+  'terraformls',            -- Terraform
 }
 
 for _, server in ipairs(servers) do
