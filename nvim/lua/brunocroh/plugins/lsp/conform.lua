@@ -2,10 +2,10 @@ local conform = require("conform")
 local util = require("conform.util")
 conform.setup({
   formatters_by_ft = {
-    javascript = { "eslint_d", "prettierd", "biome" },
-    javascriptreact = { "eslint_d", "prettierd", "biome" },
-    typescript = { "eslint_d", "prettierd", "biome" },
-    typescriptreact = { "eslint_d", "prettierd", "biome" },
+    javascript = { "eslint_d", "prettierd", "biome", 'oxlint', 'oxfmt' },
+    javascriptreact = { "eslint_d", "prettierd", "biome", 'oxlint', 'oxfmt' },
+    typescript = { "eslint_d", "prettierd", "biome", 'oxlint', 'oxfmt' },
+    typescriptreact = { "eslint_d", "prettierd", "biome", 'oxlint', 'oxfmt' },
     lua = { "stylua" },
     css = { "prettierd" },
     scss = { "prettierd" },

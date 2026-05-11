@@ -23,10 +23,10 @@ vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
 -- Configuring native diagnostics
 vim.diagnostic.config({
   virtual_text = {
-    source = 'always',
+    source = true,
   },
   float = {
-    source = 'always',
+    source = true,
   },
 })
 
@@ -41,6 +41,7 @@ local servers = {
   'yamlls',                 -- YAML
   'gdscript',               -- GodotLanguage
   'eslint',                 -- Eslint
+  'oxlint',                 -- Oxlint
   'lua_ls',                 -- Lua
   'graphql',                -- GraphQL
   'rust_analyzer',          -- Rust
