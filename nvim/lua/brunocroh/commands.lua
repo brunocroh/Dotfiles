@@ -1,0 +1,5 @@
+vim.api.nvim_create_user_command("Oxlint", function()
+  local output = vim.fn.systemlist("npx oxlint -f unix")
+  vim.fn.setqflist({}, "r", { title = "Oxlint", lines = output, efm = "%f:%l:%c: %m" })
+  vim.cmd("copen")
+end, {})

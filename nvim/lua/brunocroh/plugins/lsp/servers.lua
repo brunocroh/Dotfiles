@@ -23,10 +23,16 @@ vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
 -- Configuring native diagnostics
 vim.diagnostic.config({
   virtual_text = {
-    source = true,
+    source = 'always',
   },
   float = {
-    source = true,
+    source = 'always',
+  },
+})
+
+vim.filetype.add({
+  pattern = {
+    ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
   },
 })
 
@@ -46,7 +52,6 @@ local servers = {
   'graphql',                -- GraphQL
   'rust_analyzer',          -- Rust
   'kotlin_language_server', -- Kotlin
-  'jdtls',                  -- Java
   'terraformls',            -- Terraform
 }
 

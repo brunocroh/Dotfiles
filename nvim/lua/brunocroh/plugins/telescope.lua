@@ -1,7 +1,6 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 local finders = require('telescope.builtin')
-local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
   defaults = {
@@ -20,7 +19,6 @@ telescope.setup({
         ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
         ['<C-s>'] = actions.send_selected_to_qflist,
         ['<C-q>'] = actions.send_to_qflist,
-        ["<C-i>"] = lga_actions.quote_prompt(),
       },
     },
     file_ignore_patterns = {
@@ -73,7 +71,14 @@ vim.keymap.set('n', "<leader>th", Telescope.help_tags)
 
 -- Fuzzy find active buffers
 vim.keymap.set('n', "<leader>b", Telescope.buffers)
-vim.keymap.set('n', "<leader>u", Telescope.diagnostics)
+vim.keymap.set('n', "<leader>t", function()
+  Telescope.diagnostics({
+    bufnr = nil,
+    root_dir = true,
+    sort_by = "severity",
+    workspace = true,
+  })
+end)
 
 -- Search for string
 vim.keymap.set("n", "<leader>i", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")

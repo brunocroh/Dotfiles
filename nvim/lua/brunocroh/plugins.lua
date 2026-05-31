@@ -1,6 +1,5 @@
 require("lazy").setup({
   { 'wakatime/vim-wakatime', lazy = false },
-  "mfussenegger/nvim-jdtls",
   "tpope/vim-abolish",
   "f-person/git-blame.nvim",
   "airblade/vim-gitgutter",
@@ -96,7 +95,8 @@ require("lazy").setup({
   {
     "folke/trouble.nvim",
     dependencies = {
-      "kyazdani42/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
     config = function()
       require('brunocroh.plugins.lsp.trouble')
@@ -137,6 +137,7 @@ require("lazy").setup({
     {
       'nvim-telescope/telescope.nvim',
       dependencies = {
+        "folke/trouble.nvim",
         "nvim-telescope/telescope-live-grep-args.nvim",
         "nvim-lua/plenary.nvim",
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
@@ -244,6 +245,12 @@ require("lazy").setup({
     config = function()
       require('brunocroh.plugins.fidget')
     end
+  },
+  {
+    'nvim-java/nvim-java',
+    config = function()
+      require('brunocroh.plugins.lsp.nvim-java')
+    end,
   },
   { "folke/neoconf.nvim", cmd = "Neoconf" },
 })

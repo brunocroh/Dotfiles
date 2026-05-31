@@ -34,3 +34,4 @@ set.expandtab = true
 require('brunocroh.keybinds')
 require('brunocroh.settings')
 require('brunocroh.plugins')
+require('brunocroh.commands')

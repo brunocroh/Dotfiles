@@ -14,8 +14,8 @@ map('n', '<leader><leader>x', '<cmd>source %<CR>')
 
 vim.api.nvim_set_keymap('n', '<leader><leader>r', ':luafile ~/.config/nvim/init.lua<CR>', { noremap = true, silent = true })
 
-map('n', '<leader>x', '<cmd>:.lua<CR>')
-map('v', '<leader>x', '<cmd>:lua<CR>')
+-- map('n', '<leader>x', '<cmd>:.lua<CR>')
+-- map('v', '<leader>x', '<cmd>:lua<CR>')
 
 map('n', '<C-j>', '<cmd>:cnext<CR>zz')
 map('n', '<C-k>', '<cmd>:cprev<CR>zz')
