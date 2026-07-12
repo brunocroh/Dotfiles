@@ -131,4 +131,9 @@ ls.add_snippets("typescriptreact", {
       '}',
     })
   ),
+
+  s(
+    'exit',
+    fmt('process.exit({})', i(1))
+  ),
 })

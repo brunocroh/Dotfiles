@@ -11,6 +11,13 @@ require("lazy").setup({
   'nvim-neotest/nvim-nio',
   'rcarriga/nvim-dap-ui',
   {
+    "paradoxical-dev/zeal.nvim",
+    event = "VeryLazy",
+    opts = {
+
+    }
+  },
+  {
     "mfussenegger/nvim-dap",
     config = function()
       require('brunocroh.plugins.dap.config')
@@ -36,6 +43,11 @@ require("lazy").setup({
     config = function()
       require('colorizer').setup()
     end
+  },
+  {
+    'mrjones2014/dash.nvim',
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    build = 'make install',
   },
   {
     "brunocroh/open-link.nvim",
@@ -122,11 +134,23 @@ require("lazy").setup({
   {
     {
       'nvim-treesitter/nvim-treesitter',
-      builD = ':TSUpdate',
+      build = ':TSUpdate',
       config = function()
         require('brunocroh.plugins.treesitter')
       end,
     },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    init = function()
+      -- Disable entire built-in ftplugin mappings to avoid conflicts.
+      -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+      -- vim.g.no_plugin_maps = true
+    end,
+    config = function()
+      require('brunocroh.plugins.treesitter-textobjects')
+    end,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -151,7 +175,7 @@ require("lazy").setup({
   {
     'mattn/emmet-vim',
     config = function()
-      vim.g.user_emmet_leader_key = ','
+      -- vim.g.user_emmet_leader_key = ','
       vim.g.user_emmet_settings = {
         indent_blockelement = 1,
       }

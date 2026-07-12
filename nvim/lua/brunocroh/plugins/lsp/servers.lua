@@ -30,12 +30,6 @@ vim.diagnostic.config({
   },
 })
 
-vim.filetype.add({
-  pattern = {
-    ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
-  },
-})
-
 ---List of the LSP server that don't need special configuration
 local servers = {
   'zls',                    -- Zig
@@ -52,6 +46,7 @@ local servers = {
   'graphql',                -- GraphQL
   'rust_analyzer',          -- Rust
   'kotlin_language_server', -- Kotlin
+  -- 'jdtls',                  -- Java
   'terraformls',            -- Terraform
 }
 

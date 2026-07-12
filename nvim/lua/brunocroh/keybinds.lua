@@ -19,8 +19,9 @@ vim.api.nvim_set_keymap('n', '<leader><leader>r', ':luafile ~/.config/nvim/init.
 
 map('n', '<C-j>', '<cmd>:cnext<CR>zz')
 map('n', '<C-k>', '<cmd>:cprev<CR>zz')
-map("n", "<Tab>", ":tabnext<CR>")
+-- map("n", "<Tab>", ":tabnext<CR>") // if terminal do not support kitty keyboard protocol it override C-i 😭
 map("n", "<S-Tab>", ":tabprev<CR>")
+vim.keymap.set("n", "<C-i>", "<C-i>", { noremap = true })
 
 local qf_open = 0
 map('n', '<C-q>', function ()
@@ -32,11 +33,6 @@ map('n', '<C-q>', function ()
     qf_open = 1
   end
 end, { desc = 'toggle quickfix list'})
-
-vim.g.user_emmet_leader_key=','
-vim.g.user_emmet_settings = {
-  indent_blockelement = 1,
-}
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',

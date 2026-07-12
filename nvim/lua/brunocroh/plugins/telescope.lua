@@ -38,11 +38,15 @@ telescope.setup({
       override_file_sorter = true,    -- override the file sorter
       case_mode = 'smart_case',       -- "smart_case" | "ignore_case" | "respect_case"
     },
+    dash = {
+
+    }
   },
 })
 
 telescope.load_extension('live_grep_args')
 telescope.load_extension('fzf')
+telescope.load_extension('dash')
 
 local builtin = require "telescope.builtin"
 
