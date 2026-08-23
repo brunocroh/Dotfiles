@@ -30,6 +30,12 @@ vim.diagnostic.config({
   },
 })
 
+vim.filetype.add({
+  pattern = {
+    ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
+  },
+})
+
 ---List of the LSP server that don't need special configuration
 local servers = {
   'zls',                    -- Zig
@@ -46,6 +52,7 @@ local servers = {
   'graphql',                -- GraphQL
   'rust_analyzer',          -- Rust
   'kotlin_language_server', -- Kotlin
+  'clangd',                 -- C
   -- 'jdtls',                  -- Java
   'terraformls',            -- Terraform
 }
@@ -57,6 +64,8 @@ for _, server in ipairs(servers) do
   })
   vim.lsp.enable(server)
 end
+
+vim.lsp.enable('gitlab-ci-ls')
 
 vim.lsp.config('tailwindcss', {
   flags = flags,

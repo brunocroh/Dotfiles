@@ -2,6 +2,38 @@ local dap = require('dap')
 local dapui = require('dapui')
 local dapgo = require('dap-go')
 
+dap.configurations.c = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    runInTerminal = true,
+
+    program = function()
+      return vim.fn.input(
+        "Path to executable: ",
+        vim.fn.getcwd() .. "/",
+        "file"
+      )
+    end,
+
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+  }
+}
+
+dap.configurations.cpp = dap.configurations.c
+
+dap.adapters.codelldb = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = vim.fn.stdpath("data")
+      .. "/mason/bin/codelldb",
+    args = { "--port", "${port}" },
+  }
+}
+
 dap.configurations.gdscript = {
   {
     type = "godot",
